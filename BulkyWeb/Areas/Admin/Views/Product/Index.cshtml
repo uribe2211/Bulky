@@ -1,0 +1,87 @@
+﻿@model List<Product>;
+
+<div class="card shadow border-0 mt-4">
+    <div class="class-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Products</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container pb-4 overflow-auto">
+        <div class="row pt-4">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end pb-4">
+                <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
+                    <i class="bi bi-plus-square-fill"></i> Create a new product
+                </a>
+            </div>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <tr>
+                <th>
+                    Product Id
+                </th>
+                <th>
+                    Product Title
+                </th>
+                <th>
+                    Product Description
+                </th>
+                <th>
+                    Product ISBN
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Price
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+
+            <tbody>
+                @foreach (var item in Model.OrderBy(u => u.Title))
+                {
+                    <tr>
+                        <td>
+                            @item.Id
+                        </td>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            @item.Description
+                        </td>
+                        <td>
+                            @item.ISBN
+                        </td>
+                        <td>
+                            @item.Author
+                        </td>
+                        <td>
+                            @item.Price
+                        </td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Product" asp-action="Edit" asp-route-id=@item.Id class="btn btn-primary"><i class="bi bi-pencil-fill"></i> Edit</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="w-75 btn-group" role="group">
+                                <a asp-controller="Product" asp-action="Delete" asp-route-id=@item.Id class="btn btn-danger"><i class="bi bi-trash-fill"></i> Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+    </div>
+
+    
+</div>

@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Bulky.DataAccess.Repository.IRepository
+﻿namespace Bulky.DataAccess.Repository.IRepository;
+public interface IUnitOfWork
 {
-    public interface IUnitOfWork
-    {
-        ICategoryRepository Category { get; }
-        void Save();
-    }
+    ICategoryRepository Category { get; }
+    IProductRepository Product { get; }
+    void Save();
 }
