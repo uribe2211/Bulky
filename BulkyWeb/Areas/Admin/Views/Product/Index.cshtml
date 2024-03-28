@@ -13,75 +13,26 @@
             <div class="col-6">
             </div>
             <div class="col-6 text-end pb-4">
-                <a asp-controller="Product" asp-action="Create" class="btn btn-primary">
+                <a asp-controller="Product" asp-action="Upsert" class="btn btn-primary">
                     <i class="bi bi-plus-square-fill"></i> Create a new product
                 </a>
             </div>
         </div>
 
-        <table class="table table-bordered table-striped">
-            <tr>
-                <th>
-                    Product Id
-                </th>
-                <th>
-                    Product Title
-                </th>
-                <th>
-                    Product Description
-                </th>
-                <th>
-                    Product ISBN
-                </th>
-                <th>
-                    Author
-                </th>
-                <th>
-                    Price
-                </th>
-                <th></th>
-                <th></th>
-            </tr>
-
-            <tbody>
-                @foreach (var item in Model.OrderBy(u => u.Title))
-                {
-                    <tr>
-                        <td>
-                            @item.Id
-                        </td>
-                        <td>
-                            @item.Title
-                        </td>
-                        <td>
-                            @item.Description
-                        </td>
-                        <td>
-                            @item.ISBN
-                        </td>
-                        <td>
-                            @item.Author
-                        </td>
-                        <td>
-                            @item.Price
-                        </td>
-                        <td>
-                            <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Product" asp-action="Edit" asp-route-id=@item.Id class="btn btn-primary"><i class="bi bi-pencil-fill"></i> Edit</a>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="w-75 btn-group" role="group">
-                                <a asp-controller="Product" asp-action="Delete" asp-route-id=@item.Id class="btn btn-danger"><i class="bi bi-trash-fill"></i> Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                }
-
-            </tbody>
-
+        <table id="tblData" class="table table-bordered table-striped" width="100%">
+            <thead>
+                <tr>
+                    <th>Product Title</th>
+                    <th>Product ISBN</th>
+                    <th>Price</th>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th></th>
+                </tr>
+            </thead>
         </table>
     </div>
-
-    
 </div>
+@section Scripts{
+    <script src="~/js/product.js" type="text/javascript"></script>
+}
